@@ -7,8 +7,6 @@ set nocp
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-filetype plugin indent on
-syntax on
 
 "-----------------------------------------------------------------------------.
 " Get set!                                                                    |
@@ -34,7 +32,8 @@ set lazyredraw " Choosy redraw.
 set magic " Marginally smarter regular expressions by default.
 set matchpairs+=<:> " Match angle brackets.
 set nowrap " Disable text wrapping.
-set number " Display line numbers.
+set noswf " No swapfiles.
+set relativenumber " Display relative line numbers.
 set numberwidth=5 " Minimal number of columns to use for the line number.
 set scrolloff=8 " Screenlines to keep above and below the cursor.
 set shell=bash " Whatever.
@@ -49,15 +48,17 @@ set textwidth=79 " Wrap text to 79 characters when formatting with gw.
 set timeout timeoutlen=2000 ttimeoutlen=100 " Quick command timeout.
 set title " Set window title.
 set ttyfast " Improves redrawing.
+set ttyscroll=3 " Improves redrawing.
 set visualbell t_vb= " No beeps.
-set winwidth=80 " Make active window 80 characters wide.
+set winwidth=87 " Make active window 80 characters wide.
 set whichwrap+=h,l " Let h and l wrap lines.
 set wildignore+=.DS_Store " Ignore .DS_Store files.
+set wildignore+=*/tmp/* " Ignore temp directories.
 let g:netrw_list_hide= '.DS_Store$' " Ignore them extra hard.
 set wildmenu wildmode=longest,list " Better command-line completion.
 
 if has('gui_running')
-  set guifont=Inconsolata:h16
+  set guifont=Inconsolata-dz:h16
   set guioptions-=T " No toolbar.
   set colorcolumn=80
 endif
@@ -70,6 +71,7 @@ endif
 aug Autocmds
   au!
   " Attempt to recover cursor position when reopening a file.
+
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
         \ exe "normal! g`\"" | endif
   " Delete trailing whitespace on write (and any ! commands).
@@ -78,11 +80,14 @@ aug Autocmds
   " Four spaces for Python, JavaScript, Java, and C.
   autocmd FileType python,javascript,java,c setlocal ts=4 sw=4 sts=4
 
-  " Use real tabs when editing makefiles.
-  autocmd FileType make setlocal noexpandtab
+  " Use real tabs on special occasions.
+  autocmd FileType make,gitconfig setlocal noexpandtab
 
   " Double semicolon comments for Scheme.
   autocmd FileType scheme set commentstring=;;\ %s
+
+  " Write on lost focus.
+  autocmd BufLeave,FocusLost * silent! wall
 aug END
 
 "-----------------------------------------------------------------------------.
@@ -145,6 +150,14 @@ map! <c-e> <end>
 map! <c-f> <right>
 map! <c-b> <left>
 map! <c-d> <del>
+map! ∫ <c-o>B
+map! ƒ <c-o>W
+map! ∂ <c-o>dw
+map!  <c-o>u
+
+map ∫ B
+map ƒ W
+
 " Warning: Mappings below require GitHub-invisible escape literal (^[).
 cno b <s-left>
 cno f <s-right>
@@ -156,54 +169,59 @@ nn x :
 "-----------------------------------------------------------------------------'
 Bundle 'gmarik/vundle'
 
-Bundle 'flazz/vim-colorschemes'
-  set background=light
-  colorscheme solarized
-
-Bundle 'jpalardy/vim-slime'
-  let g:slime_target = "tmux"
-
 Bundle 'sjl/gundo.vim'
   nn <f5> :GundoToggle<cr>
-
+"
 Bundle 'tpope/vim-rails'
   map <leader>m :Rmodel
   map <leader>v :Rview
   map <leader>c :Rcontroller
-
-Bundle 'thinca/vim-quickrun'
-  let g:quickrun_config={'*': {'split': ''}}
-  set splitbelow
-
+"
 Bundle 'wincent/Command-T'
-  nnoremap <silent> <leader>b :CommandTBuffer<CR>
-  nnoremap <silent> <leader>f :CommandT<cr>
+  nnoremap <silent> <leader>f :CommandTFlush<cr>\|:CommandT<cr>
   nnoremap <silent> <leader>F :CommandTFlush<cr>\|:CommandT %:h<cr>
   let g:CommandTCancelMap=['<C-c>', '<C-x>', '<C-g>', '<ESC>']
 
+Bundle 'IndexedSearch'
+Bundle 'SirVer/ultisnips'
+Bundle 'VimClojure'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'asux/vim-capybara'
+Bundle 'claco/jasmine.vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
-Bundle 'hallison/vim-ruby-sinatra'
-Bundle 'hdima/vim-scripts'
-Bundle 'IndexedSearch'
-Bundle 'jergason/scala.vim'
-Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'jgdavey/vim-blockle'
+Bundle 'jgdavey/vim-turbux'
+Bundle 'junegunn/seoul256.vim'
 Bundle 'matchit.zip'
-Bundle 'MatchTag'
+Bundle 'mattn/zencoding-vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'nginx.vim'
+Bundle 'noah/vim256-color'
 Bundle 'othree/html5.vim'
+Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'python.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'sjl/vitality.vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'taglist.vim'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-coffee-script'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'VimClojure'
+Bundle 'zeis/vim-kolor'
+
 "-----------------------------------------------------------------------------,
 " Go!                                                                         |
 "-----------------------------------------------------------------------------'
+filetype plugin indent on
+syntax on sync minlines=200
+color kolor

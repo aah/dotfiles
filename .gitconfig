@@ -1,8 +1,6 @@
 [user]
 	name = Shane Watson
 	email = shane@watson.io
-[color]
-	ui = auto
 [alias]
 	aa = add --all
 	b = branch
@@ -12,9 +10,17 @@
 	di = diff --cached
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	st = status
-[merge]
-	tool = vimdiff
+[color]
+	ui = auto
+[color "diff"]
+	commit = blue
 [core]
 	editor = vim
 [credential]
 	helper = osxkeychain
+[merge]
+	tool = vimdiff
+[pull]
+	rebase=true
+[push]
+	default = simple
