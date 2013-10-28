@@ -1,4 +1,4 @@
-fpath=(/usr/local/share/zsh-completions $HOME/.zsh/prompt $fpath)
+fpath=(/usr/local/share/zsh-completions $HOME/.zsh/functions $fpath)
 typeset -U fpath
 
 export PATH="/usr/local/bin:$PATH"
