@@ -19,6 +19,7 @@
 /.vagrant.d
 /.vim
 /.viminfo
+/.zcompcache
 /.zcompdump*
 /.zsh-update
 /code
