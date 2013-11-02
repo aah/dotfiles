@@ -9,6 +9,7 @@
 /.fasd
 /.fasd-init-cache
 /.gem
+/.heroku
 /.lesshst
 /.mplayer
 /.rvm
