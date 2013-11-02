@@ -5,6 +5,7 @@ alias vi="vim"
 # ruby
 alias b="bundle"
 alias mm="middleman"
+alias mmb="middleman build"
 alias mms="middleman server --host localhost"
 alias rcs="rails console --sandbox"
 alias rgc="rvm gemset create"
