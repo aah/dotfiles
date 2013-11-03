@@ -2,6 +2,13 @@ alias l="ls"
 alias v.="vim ."
 alias vi="vim"
 
+# selecta (github: garybernhardt/selecta)
+alias code="dir_selecta ~/code"
+alias gbs="git branch | cut -c 3- | selecta | xargs git checkout"
+alias jj="dir_selecta ~/{code,work}"
+alias rgu="rvm_gemset_selecta"
+alias work="dir_selecta ~/work"
+
 # ruby
 alias b="bundle"
 alias mm="middleman"
@@ -9,8 +16,6 @@ alias mmb="middleman build"
 alias mms="middleman server --host localhost"
 alias rcs="rails console --sandbox"
 alias rgc="rvm gemset create"
-alias rgl="rvm gemset list"
-alias rgu="rvm gemset use"
 alias rsbl="rails server --bind localhost"
 
 # git

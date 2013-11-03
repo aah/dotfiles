@@ -1,0 +1,3 @@
+rvm_gemset_selecta() {
+  rvm gemset use $(rvm gemset list | cut -c 4- | sed '1,2d; /^$/d; s/[()]//g;' | selecta)
+}
