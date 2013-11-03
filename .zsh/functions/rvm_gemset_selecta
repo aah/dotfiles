@@ -1,3 +1,15 @@
 rvm_gemset_selecta() {
-  rvm gemset use $(rvm gemset list | cut -c 4- | sed '1,2d; /^$/d; s/[()]//g;' | selecta)
+  if [[ $# > 0 ]]; then
+    rvm gemset use $(gemset_list | selecta -s $1)
+  else
+    rvm gemset use $(gemset_list | selecta)
+  fi
 }
+
+gemset_list() {
+  rvm gemset list | cut -c 4- | sed '1,2d; /^$/d; s/[()]//g;'
+}
+
+rvm_gemset_selecta "$@"
+
+# vim:ft=zsh:

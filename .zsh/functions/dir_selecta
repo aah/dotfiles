@@ -1,3 +1,5 @@
 dir_selecta() {
   cd $(find "$@" -type d -maxdepth 1 | selecta)
 }
+
+# vim:ft=zsh:

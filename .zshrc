@@ -10,7 +10,7 @@ for config_file in $HOME/.zsh/**/*.zsh; do
   source $config_file
 done
 
-autoload -U g rvm_gemset_selecta dir_selecta promptinit
+autoload -U promptinit g rvm_gemset_selecta dir_selecta
 promptinit
 prompt minimal
 
