@@ -16,6 +16,8 @@ prompt minimal
 
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 ls --color -d . &>/dev/null 2>&1 &&
   alias ls='ls --color=tty' || alias ls='ls -G'
 
