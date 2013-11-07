@@ -1,3 +1,4 @@
+alias ...="cd ../.."
 alias l="ls -1A"
 alias v.="vim ."
 alias vi="vim"
