@@ -13,6 +13,7 @@
 /.lesshst
 /.mplayer
 /.netrc
+/.pylint.d
 /.rvm
 /.ssh
 /.subversion
