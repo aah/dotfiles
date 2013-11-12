@@ -1,8 +1,8 @@
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt appendhistory autocd extendedglob prompt_subst
+setopt autocd extendedglob prompt_subst
 unsetopt beep
 bindkey -e
 
