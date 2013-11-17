@@ -3,6 +3,7 @@ alias ...="cd ../.."
 alias l="ls -1A"
 alias v.="vim ."
 alias vi="vim"
+alias dstr="find . -name '*.DS_Store' -type f -delete"
 
 # selecta (github: garybernhardt/selecta)
 alias code="dir_selecta ~/code"
