@@ -14,6 +14,7 @@ alias work="dir_selecta ~/work"
 
 # ruby
 alias b="bundle"
+alias dep="bundle exec cap production deploy"
 alias mm="middleman"
 alias mmb="middleman build"
 alias mms="middleman server --host localhost"
