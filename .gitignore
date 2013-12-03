@@ -10,7 +10,9 @@
 /.fasd-init-cache
 /.gem
 /.heroku
+/.lein
 /.lesshst
+/.m2
 /.mplayer
 /.netrc
 /.pylint.d
